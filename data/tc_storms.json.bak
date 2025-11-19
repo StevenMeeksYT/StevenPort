@@ -1,0 +1,34 @@
+[
+  {
+    "id": 1,
+    "storm_id": "AL012020",
+    "name": "Sample Storm A",
+    "basin": "NATL",
+    "msw": 85,
+    "mslp": 970,
+    "formed": "2020-08-12",
+    "dissipated": "2020-08-16",
+    "ace_value": 12.3,
+    "damage": "moderate",
+    "fatalities": 1,
+    "desc": "Sample tropical cyclone used for local testing.",
+    "storm_img": "",
+    "track_img": ""
+  },
+  {
+    "id": 2,
+    "storm_id": "EP052019",
+    "name": "Sample Storm B",
+    "basin": "NEPAC",
+    "msw": 50,
+    "mslp": 995,
+    "formed": "2019-09-01",
+    "dissipated": "2019-09-05",
+    "ace_value": 4.1,
+    "damage": "minor",
+    "fatalities": 0,
+    "desc": "Another sample cyclone for dev/testing.",
+    "storm_img": "",
+    "track_img": ""
+  }
+]
