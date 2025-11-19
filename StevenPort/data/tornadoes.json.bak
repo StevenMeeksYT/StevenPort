@@ -1,0 +1,42 @@
+[
+  {
+    "id": 1,
+    "tornado_id": "2020-05-15-001",
+    "name": "Greenville County",
+    "date": "2020-05-15",
+    "intensity_scale": "EF2",
+    "ef_scale": "EF2",
+    "wind_speed": 125,
+    "path_length": 5.4,
+    "path_width": 250,
+    "fatalities": 0,
+    "injuries": 3,
+    "damage": "moderate",
+    "state": "AL",
+    "latitude": 32.444,
+    "longitude": -86.987,
+    "description": "A strong tornado impacted parts of Greenville County causing structural damage to homes and outbuildings.",
+    "tornado_img": "",
+    "track_img": ""
+  },
+  {
+    "id": 2,
+    "tornado_id": "2019-03-03-045",
+    "name": "Smithville",
+    "date": "2019-03-03",
+    "intensity_scale": "EF3",
+    "ef_scale": "EF3",
+    "wind_speed": 150,
+    "path_length": 12.2,
+    "path_width": 500,
+    "fatalities": 2,
+    "injuries": 20,
+    "damage": "major",
+    "state": "MO",
+    "latitude": 38.123,
+    "longitude": -92.345,
+    "description": "Long-track tornado with multiple structural collapses and widespread tree damage.",
+    "tornado_img": "",
+    "track_img": ""
+  }
+]

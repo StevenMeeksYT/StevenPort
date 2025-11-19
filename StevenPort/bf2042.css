@@ -1,0 +1,224 @@
+/* ============================================================
+   StevenPort BF2042-Inspired Overrides (Monochrome + Cyan HUD)
+   Keep light/dark themes fixed; subtle VFX and transitions
+   This file overrides selective styles from master.css/futuristic.css
+   ============================================================ */
+
+:root {
+	--fx-cyan: #00e5ff;
+	/* Adaptive intensity levels */
+	--fx-cyan-alpha-soft: 0.10;
+	--fx-cyan-alpha: 0.18;
+	--fx-cyan-alpha-strong: 0.28;
+	/* Current computed alpha (can be overridden by context/utilities) */
+	--fx-current-alpha: var(--fx-cyan-alpha);
+	/* Glow assembled from current alpha */
+	--fx-cyan-glow: 0 0 0 1px rgba(0, 229, 255, calc(var(--fx-current-alpha) + 0.07)), 0 0 24px rgba(0, 229, 255, calc(var(--fx-current-alpha) - 0.03));
+}
+
+/* Dark theme: slightly stronger baseline */
+[data-theme="dark"] :root, [data-theme="dark"] {
+	--fx-cyan-alpha-soft: 0.12;
+	--fx-cyan-alpha: 0.2;
+	--fx-cyan-alpha-strong: 0.32;
+}
+
+/* Light theme: ensure BF2042 accents remain visible on light backgrounds */
+[data-theme="light"] :root, [data-theme="light"] {
+	--fx-cyan-alpha-soft: 0.14;
+	--fx-cyan-alpha: 0.22;
+	--fx-cyan-alpha-strong: 0.34;
+}
+
+/* Base HUD overlays */
+body {
+	position: relative;
+}
+
+body::before {
+	content: '';
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background:
+		radial-gradient(circle at 20% 80%, rgba(0, 229, 255, var(--fx-cyan-alpha-soft)) 0%, transparent 50%),
+		radial-gradient(circle at 80% 20%, rgba(0, 229, 255, calc(var(--fx-cyan-alpha-soft) - 0.02)) 0%, transparent 50%);
+	animation: morph-gradient 24s ease infinite;
+	z-index: -1;
+	pointer-events: none;
+}
+
+body::after {
+	content: '';
+	position: fixed;
+	inset: 0;
+	pointer-events: none;
+	background-image:
+		linear-gradient(rgba(0,0,0,0.06), rgba(0,0,0,0.06)),
+		linear-gradient(transparent 23px, rgba(0, 229, 255, var(--fx-cyan-alpha-soft)) 24px),
+		linear-gradient(90deg, transparent 23px, rgba(0, 229, 255, calc(var(--fx-cyan-alpha-soft) - 0.02)) 24px);
+	background-size: 100% 100%, 100% 24px, 24px 100%;
+	mix-blend-mode: overlay;
+	z-index: 0;
+}
+
+/* Header/Nav */
+.topbar {
+	background: color-mix(in srgb, var(--bg-secondary) 85%, transparent);
+	backdrop-filter: saturate(120%) blur(8px);
+}
+
+.nav-link::after {
+	background: var(--fx-cyan);
+}
+
+/* (reverted) brand border removed by user request */
+
+/* Buttons */
+.btn {
+	background: linear-gradient(45deg, var(--bg-secondary), var(--bg-tertiary));
+	box-shadow: var(--shadow-light);
+}
+
+.btn::before {
+	background: linear-gradient(90deg, transparent, rgba(255,255,255,0.12), transparent);
+}
+
+.btn:hover {
+	box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3), 0 0 24px rgba(0, 229, 255, var(--fx-cyan-alpha));
+}
+
+.btn-primary {
+	background: linear-gradient(135deg, #0f0f10, #2a2a2a);
+	color: #ffffff;
+	border: 1px solid rgba(255,255,255,0.06);
+	/* Use strong intensity for primary CTAs */
+	--fx-current-alpha: var(--fx-cyan-alpha-strong);
+	box-shadow: var(--fx-cyan-glow);
+}
+
+.btn-primary:hover {
+	background: linear-gradient(135deg, #161718, #333536);
+	color: #ffffff;
+	box-shadow: 0 0 0 2px rgba(0, 229, 255, var(--fx-cyan-alpha)), 0 12px 36px rgba(0, 229, 255, var(--fx-cyan-alpha));
+}
+
+.btn-outline {
+	color: var(--text-primary);
+	border: 2px solid var(--border-color);
+}
+
+.btn-outline:hover {
+	background: var(--fx-cyan);
+	color: #001417;
+}
+
+/* Cards */
+.card::before {
+	/* Softer accent by default on cards */
+	background: linear-gradient(90deg, transparent, rgba(0, 229, 255, var(--fx-cyan-alpha)), transparent);
+}
+
+.card::after {
+	background: linear-gradient(90deg, transparent, rgba(0, 229, 255, var(--fx-cyan-alpha-soft)), transparent);
+}
+
+/* Section headings: subtle HUD underline */
+h1, h2, h3, h4, h5, h6 { position: relative; }
+h1::after, h2::after, h3::after {
+	content: '';
+	position: absolute;
+	bottom: -6px;
+	left: 0;
+	width: 64px;
+	height: 2px;
+	background: linear-gradient(90deg, var(--fx-cyan), transparent);
+	opacity: 0.4;
+	transition: width var(--transition-normal), opacity var(--transition-fast);
+}
+h1:hover::after, h2:hover::after, h3:hover::after {
+	width: 100%;
+	opacity: 0.7;
+}
+
+/* Stats/Projects accents */
+.stat-number {
+	color: var(--text-primary);
+	text-shadow: 0 0 20px rgba(0, 229, 255, 0.08);
+}
+
+.project-card:hover {
+	box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25), 0 0 0 1px rgba(0, 229, 255, var(--fx-cyan-alpha));
+}
+
+/* Footer links hover */
+.footer-section a:hover { color: var(--fx-cyan); }
+
+/* Reduce rainbow/neon from imported futuristic.css */
+.neon-glow { text-shadow: none; }
+.neon-border { box-shadow: none; border-color: var(--border-color); }
+
+/* Tone matrix rain color to neutral */
+.matrix-column { color: #8a8a8a; }
+
+/* Theme toggle icon maintain but keep themes fixed via existing light/dark only */
+[data-theme="dark"] .btn::before { background: linear-gradient(90deg, transparent, rgba(255,255,255,0.08), transparent); }
+
+/* ---------------------------------
+   Context-aware intensity mapping
+   ---------------------------------*/
+/* Stronger in key areas */
+.hero-section,
+.topbar:hover,
+.section-title,
+.btn:focus-visible,
+.btn-primary,
+.admin-only,
+.alert-info,
+.alert-warning,
+.alert-success,
+.alert-error {
+	--fx-current-alpha: var(--fx-cyan-alpha-strong);
+}
+
+/* Softer in dense content areas */
+.footer,
+.table-container,
+.modal .modal-content,
+.form-box,
+.content-box {
+	--fx-current-alpha: var(--fx-cyan-alpha-soft);
+}
+
+/* Default areas */
+body {
+	--fx-current-alpha: var(--fx-cyan-alpha);
+}
+
+/* Utilities to opt-in per element */
+.accent-strong { --fx-current-alpha: var(--fx-cyan-alpha-strong) !important; }
+.accent-soft { --fx-current-alpha: var(--fx-cyan-alpha-soft) !important; }
+.accent-default { --fx-current-alpha: var(--fx-cyan-alpha) !important; }
+
+/* Map current-alpha to common effects via shadows on focusable/interactive */
+.btn,
+.card:hover,
+.mobile-nav.active,
+.nav-link:hover::after {
+	box-shadow: var(--fx-cyan-glow);
+}
+
+/* Respect user preferences */
+@media (prefers-reduced-motion: reduce) {
+	.btn,
+	.card,
+	.project-card { box-shadow: none; }
+}
+
+@media (prefers-contrast: more) {
+	:root { --fx-cyan-alpha-strong: calc(var(--fx-cyan-alpha-strong) + 0.08); }
+}
+
+

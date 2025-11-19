@@ -1,0 +1,787 @@
+/* ============================================================
+   FUTURISTIC ENHANCEMENTS - Advanced UI/UX Effects v1.0
+   Features: Particle Effects, 3D Transforms, Neural Networks
+   Author: Steven Weathers - Enhanced AI Assistant
+   ============================================================ */
+
+/* -------------------------------
+   Advanced CSS Variables
+---------------------------------*/
+:root {
+  /* Monochromatic Futuristic Colors */
+  --neon-blue: #ffffff; /* Pure white */
+  --neon-purple: #cccccc; /* Light gray */
+  --neon-green: #999999; /* Medium gray */
+  --neon-pink: #666666; /* Dark gray */
+  --neon-orange: #808080; /* Gray */
+  --neon-cyan: #b3b3b3; /* Light gray */
+  
+  /* Cyberpunk Colors - Monochromatic */
+  --cyber-dark: #1a1a1a;
+  --cyber-darker: #000000;
+  --cyber-accent: #ffffff; /* Pure white accent */
+  --cyber-warning: #cccccc; /* Light gray warning */
+  --cyber-info: #999999; /* Medium gray info */
+  
+  /* Glassmorphism */
+  --glass-bg: rgba(255, 255, 255, 0.1);
+  --glass-border: rgba(255, 255, 255, 0.2);
+  --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  
+  /* Holographic Effects */
+  --holo-gradient: linear-gradient(45deg, 
+    var(--neon-blue) 0%, 
+    var(--neon-purple) 25%, 
+    var(--neon-pink) 50%, 
+    var(--neon-cyan) 75%, 
+    var(--neon-blue) 100%);
+  
+  /* Advanced Shadows */
+  --glow-blue: 0 0 20px rgba(0, 245, 255, 0.5);
+  --glow-purple: 0 0 20px rgba(191, 0, 255, 0.5);
+  --glow-green: 0 0 20px rgba(57, 255, 20, 0.5);
+  --glow-pink: 0 0 20px rgba(255, 16, 240, 0.5);
+  
+  /* Particle System */
+  --particle-size: 2px;
+  --particle-count: 100;
+}
+
+/* -------------------------------
+   Cyberpunk Theme Variant
+---------------------------------*/
+[data-theme="cyberpunk"] {
+  --bg-primary: var(--cyber-dark);
+  --bg-secondary: #000000;
+  --bg-tertiary: #2a2a2a;
+  --text-primary: #ffffff;
+  --text-secondary: #cccccc;
+  --primary-color: var(--cyber-accent);
+  --accent-color: var(--cyber-warning);
+  --border-color: rgba(255, 255, 255, 0.3);
+}
+
+/* -------------------------------
+   Particle System Background
+---------------------------------*/
+.particle-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: -1;
+  overflow: hidden;
+}
+
+.particle {
+  position: absolute;
+  width: var(--particle-size);
+  height: var(--particle-size);
+  background: var(--neon-blue);
+  border-radius: 50%;
+  animation: float-particle 20s infinite linear;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+}
+
+.particle:nth-child(2n) {
+  background: var(--neon-purple);
+  box-shadow: 0 0 10px rgba(204, 204, 204, 0.3);
+  animation-duration: 25s;
+}
+
+.particle:nth-child(3n) {
+  background: var(--neon-green);
+  box-shadow: 0 0 10px rgba(153, 153, 153, 0.3);
+  animation-duration: 30s;
+}
+
+.particle:nth-child(4n) {
+  background: var(--neon-pink);
+  box-shadow: 0 0 10px rgba(102, 102, 102, 0.3);
+  animation-duration: 35s;
+}
+
+/* -------------------------------
+   Neural Network Background
+---------------------------------*/
+.neural-network {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: -2;
+  opacity: 0.1;
+}
+
+.neural-node {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background: var(--neon-cyan);
+  border-radius: 50%;
+  box-shadow: 0 0 10px rgba(179, 179, 179, 0.5);
+  animation: pulse-neural 3s infinite ease-in-out;
+}
+
+.neural-connection {
+  position: absolute;
+  height: 1px;
+  background: linear-gradient(90deg, 
+    transparent, 
+    rgba(179, 179, 179, 0.8), 
+    transparent);
+  animation: data-flow 4s infinite linear;
+}
+
+/* -------------------------------
+   Advanced Animations
+---------------------------------*/
+@keyframes float-particle {
+  0% {
+    transform: translateY(100vh) translateX(0) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-100px) translateX(100px) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+@keyframes pulse-neural {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.3;
+  }
+  50% {
+    transform: scale(1.5);
+    opacity: 1;
+  }
+}
+
+@keyframes data-flow {
+  0% {
+    opacity: 0;
+    transform: scaleX(0);
+  }
+  50% {
+    opacity: 1;
+    transform: scaleX(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scaleX(0);
+  }
+}
+
+@keyframes hologram-flicker {
+  0%, 100% {
+    opacity: 1;
+    filter: hue-rotate(0deg);
+  }
+  25% {
+    opacity: 0.8;
+    filter: hue-rotate(90deg);
+  }
+  50% {
+    opacity: 0.9;
+    filter: hue-rotate(180deg);
+  }
+  75% {
+    opacity: 0.7;
+    filter: hue-rotate(270deg);
+  }
+}
+
+@keyframes morph-gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes cyber-scan {
+  0% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+}
+
+@keyframes matrix-rain {
+  0% {
+    transform: translateY(-100%);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100vh);
+    opacity: 0;
+  }
+}
+
+/* -------------------------------
+   Glassmorphism Components
+---------------------------------*/
+.glass-card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
+  border-radius: var(--radius-xl);
+  position: relative;
+  overflow: hidden;
+}
+
+.glass-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, 
+    transparent, 
+    rgba(255, 255, 255, 0.1), 
+    transparent);
+  animation: shimmer-glass 3s infinite;
+}
+
+@keyframes shimmer-glass {
+  0% {
+    left: -100%;
+  }
+  100% {
+    left: 100%;
+  }
+}
+
+/* -------------------------------
+   Holographic Elements
+---------------------------------*/
+.holographic {
+  background: var(--holo-gradient);
+  background-size: 400% 400%;
+  animation: morph-gradient 4s ease infinite;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  position: relative;
+}
+
+.holographic::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: inherit;
+  filter: blur(20px);
+  opacity: 0.3;
+  z-index: -1;
+  animation: hologram-flicker 2s infinite;
+}
+
+/* -------------------------------
+   Cyberpunk Buttons
+---------------------------------*/
+.cyber-btn {
+  position: relative;
+  background: transparent;
+  border: 2px solid var(--cyber-accent);
+  color: var(--cyber-accent);
+  padding: 12px 24px;
+  font-family: 'Courier New', monospace;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  overflow: hidden;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.cyber-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: var(--cyber-accent);
+  transition: left 0.3s ease;
+  z-index: -1;
+}
+
+.cyber-btn:hover::before {
+  left: 0;
+}
+
+.cyber-btn:hover {
+  color: var(--cyber-dark);
+  box-shadow: var(--glow-green);
+}
+
+.cyber-btn::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg, 
+    transparent 30%, 
+    rgba(0, 255, 65, 0.3) 50%, 
+    transparent 70%);
+  transform: translateX(-100%);
+  animation: cyber-scan 2s infinite;
+}
+
+/* -------------------------------
+   3D Card Effects
+---------------------------------*/
+.card-3d {
+  transform-style: preserve-3d;
+  transition: transform 0.6s;
+  perspective: 1000px;
+}
+
+.card-3d:hover {
+  transform: rotateY(10deg) rotateX(5deg) translateZ(20px);
+}
+
+.card-3d.flip {
+  transform: rotateY(180deg);
+}
+
+.card-face {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: var(--radius-xl);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card-back {
+  transform: rotateY(180deg);
+  background: linear-gradient(135deg, 
+    var(--neon-purple), 
+    var(--neon-blue));
+}
+
+/* -------------------------------
+   Neon Glow Effects
+---------------------------------*/
+.neon-glow {
+  text-shadow: 
+    0 0 5px currentColor,
+    0 0 10px currentColor,
+    0 0 15px currentColor,
+    0 0 20px currentColor;
+  animation: neon-flicker 2s infinite alternate;
+}
+
+@keyframes neon-flicker {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.8;
+  }
+}
+
+.neon-border {
+  border: 2px solid var(--neon-cyan);
+  box-shadow: 
+    inset 0 0 10px var(--neon-cyan),
+    0 0 10px var(--neon-cyan),
+    0 0 20px var(--neon-cyan);
+}
+
+/* -------------------------------
+   Matrix Rain Effect
+---------------------------------*/
+.matrix-rain {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: -3;
+  overflow: hidden;
+}
+
+.matrix-column {
+  position: absolute;
+  top: -100%;
+  width: 20px;
+  height: 100vh;
+  font-family: 'Courier New', monospace;
+  color: #999999;
+  font-size: 14px;
+  line-height: 20px;
+  animation: matrix-rain 10s infinite linear;
+  opacity: 0.7;
+}
+
+/* -------------------------------
+   AI Terminal Interface
+---------------------------------*/
+.ai-terminal {
+  background: var(--cyber-dark);
+  border: 1px solid var(--cyber-accent);
+  border-radius: var(--radius-md);
+  padding: 20px;
+  font-family: 'Courier New', monospace;
+  color: #ffffff;
+  position: relative;
+  overflow: hidden;
+}
+
+.ai-terminal::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: #ffffff;
+  animation: cyber-scan 3s infinite;
+}
+
+.terminal-line {
+  margin: 5px 0;
+  opacity: 0;
+  animation: terminal-type 0.5s ease forwards;
+}
+
+.terminal-line:nth-child(1) { animation-delay: 0.1s; }
+.terminal-line:nth-child(2) { animation-delay: 0.3s; }
+.terminal-line:nth-child(3) { animation-delay: 0.5s; }
+.terminal-line:nth-child(4) { animation-delay: 0.7s; }
+.terminal-line:nth-child(5) { animation-delay: 0.9s; }
+
+@keyframes terminal-type {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.terminal-cursor {
+  display: inline-block;
+  width: 10px;
+  height: 20px;
+  background: #ffffff;
+  animation: cursor-blink 1s infinite;
+}
+
+@keyframes cursor-blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
+/* -------------------------------
+   Holographic Projections
+---------------------------------*/
+.holo-projection {
+  position: relative;
+  transform-style: preserve-3d;
+  animation: holo-float 6s ease-in-out infinite;
+}
+
+.holo-projection::before {
+  content: '';
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  right: -10px;
+  bottom: -10px;
+  background: var(--holo-gradient);
+  border-radius: inherit;
+  opacity: 0.3;
+  filter: blur(20px);
+  z-index: -1;
+  animation: hologram-flicker 3s infinite;
+}
+
+@keyframes holo-float {
+  0%, 100% {
+    transform: translateY(0px) rotateX(0deg);
+  }
+  50% {
+    transform: translateY(-20px) rotateX(5deg);
+  }
+}
+
+/* -------------------------------
+   Data Stream Visualization
+---------------------------------*/
+.data-stream {
+  position: relative;
+  overflow: hidden;
+}
+
+.data-stream::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, 
+    transparent, 
+    rgba(0, 255, 255, 0.3), 
+    transparent);
+  animation: data-flow 2s infinite linear;
+}
+
+/* -------------------------------
+   Quantum Loading Animation
+---------------------------------*/
+.quantum-loader {
+  width: 60px;
+  height: 60px;
+  position: relative;
+  margin: 20px auto;
+}
+
+.quantum-ring {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border: 3px solid transparent;
+  border-radius: 50%;
+  animation: quantum-spin 2s linear infinite;
+}
+
+.quantum-ring:nth-child(1) {
+  border-top-color: #ffffff;
+  animation-delay: 0s;
+}
+
+.quantum-ring:nth-child(2) {
+  border-right-color: #cccccc;
+  animation-delay: 0.5s;
+}
+
+.quantum-ring:nth-child(3) {
+  border-bottom-color: #999999;
+  animation-delay: 1s;
+}
+
+.quantum-ring:nth-child(4) {
+  border-left-color: #666666;
+  animation-delay: 1.5s;
+}
+
+@keyframes quantum-spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* -------------------------------
+   Neural Network Visualization
+---------------------------------*/
+.neural-viz {
+  position: relative;
+  width: 300px;
+  height: 200px;
+  margin: 20px auto;
+}
+
+.neural-layer {
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  background: #b3b3b3;
+  border-radius: 50%;
+  box-shadow: 0 0 15px rgba(179, 179, 179, 0.5);
+  animation: pulse-neural 2s infinite ease-in-out;
+}
+
+.neural-layer:nth-child(1) {
+  left: 20px;
+  top: 70px;
+  animation-delay: 0s;
+}
+
+.neural-layer:nth-child(2) {
+  left: 120px;
+  top: 20px;
+  animation-delay: 0.3s;
+}
+
+.neural-layer:nth-child(3) {
+  left: 120px;
+  top: 120px;
+  animation-delay: 0.6s;
+}
+
+.neural-layer:nth-child(4) {
+  left: 220px;
+  top: 70px;
+  animation-delay: 0.9s;
+}
+
+.neural-synapse {
+  position: absolute;
+  height: 2px;
+  background: #b3b3b3;
+  box-shadow: 0 0 5px rgba(179, 179, 179, 0.5);
+  animation: synapse-pulse 1.5s infinite ease-in-out;
+}
+
+.neural-synapse:nth-child(5) {
+  left: 80px;
+  top: 100px;
+  width: 40px;
+  transform: rotate(45deg);
+  animation-delay: 0s;
+}
+
+.neural-synapse:nth-child(6) {
+  left: 80px;
+  top: 100px;
+  width: 40px;
+  transform: rotate(-45deg);
+  animation-delay: 0.5s;
+}
+
+.neural-synapse:nth-child(7) {
+  left: 180px;
+  top: 50px;
+  width: 40px;
+  transform: rotate(45deg);
+  animation-delay: 1s;
+}
+
+.neural-synapse:nth-child(8) {
+  left: 180px;
+  top: 90px;
+  width: 40px;
+  transform: rotate(-45deg);
+  animation-delay: 1.5s;
+}
+
+@keyframes synapse-pulse {
+  0%, 100% {
+    opacity: 0.3;
+    transform: scaleX(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scaleX(1.2);
+  }
+}
+
+/* -------------------------------
+   Responsive Adjustments
+---------------------------------*/
+@media (max-width: 768px) {
+  .neural-viz {
+    width: 250px;
+    height: 150px;
+  }
+  
+  .neural-layer {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .particle {
+    width: 1px;
+    height: 1px;
+  }
+  
+  .matrix-column {
+    width: 15px;
+    font-size: 12px;
+  }
+}
+
+/* -------------------------------
+   Performance Optimizations
+---------------------------------*/
+@media (prefers-reduced-motion: reduce) {
+  .particle,
+  .neural-node,
+  .neural-layer,
+  .quantum-ring,
+  .matrix-column {
+    animation: none;
+  }
+  
+  .card-3d:hover {
+    transform: none;
+  }
+}
+
+/* -------------------------------
+   Advanced Hover Effects
+---------------------------------*/
+.futuristic-hover {
+  position: relative;
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+
+.futuristic-hover::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: radial-gradient(circle, 
+    rgba(0, 255, 255, 0.3) 0%, 
+    transparent 70%);
+  transition: all 0.6s ease;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+}
+
+.futuristic-hover:hover::before {
+  width: 300px;
+  height: 300px;
+}
+
+.futuristic-hover:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 
+    0 10px 30px rgba(0, 255, 255, 0.3),
+    0 0 20px rgba(0, 255, 255, 0.2);
+}
